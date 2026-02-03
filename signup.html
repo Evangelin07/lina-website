@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign Up | Lina Institute</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:#ffffff;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+      background:rgba(8,12,20,0.55);
+  backdrop-filter: blur(14px);
+}
+
+.nav-container{
+  padding: 22px 110px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* LOGO */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo img{
+  width:40px;
+  border-radius:50%;
+}
+.logo span {
+  font-family: 'Poppins', sans-serif; /* or 'Montserrat', sans-serif */
+  font-weight: 700;
+  font-size: 24px; /* perfect size for header */
+  color: #ffffff; /* white text */
+}
+
+/* LINKS */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+}
+.nav-links a:hover{
+  color:#3b82f6;
+}
+
+/* ================= PROFILE ================= */
+.profile{
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  cursor:pointer;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  text-transform: uppercase;
+}
+
+.profile-menu{
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #020617;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  min-width: 150px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+
+.profile-menu a,
+.profile-menu button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover{
+  background: #1e293b;
+  border-radius: 6px;
+}
+
+
+
+/* LOGIN / SIGNUP */
+.auth-link{
+  color:#3b82f6 !important;
+  font-weight:600;
+}
+
+/* PAGE CONTENT TOP SPACE */
+body{
+  padding-top:80px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+  }
+}
+
+
+/* ===== WRAPPER ===== */
+.signup-wrapper{
+  width:100%;
+  max-width:1200px;
+  padding:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+/* ===== LEFT IMAGE ===== */
+.signup-image{
+  display:flex;
+  justify-content:center;
+}
+
+.signup-image img{
+  width:100%;
+  max-width:430px;
+}
+
+/* ===== SIGNUP BOX ===== */
+.signup-box{
+  max-width:420px;
+}
+
+.signup-box h1{
+  font-size:2rem;
+  font-weight:600;
+  margin-bottom:30px;
+  color:#111827;
+}
+
+/* INPUTS */
+.signup-box input{
+  width:100%;
+  padding:14px 16px;
+  font-size:15px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  outline:none;
+  margin-bottom:18px;
+}
+
+.signup-box input:focus{
+  border-color:#6d28d9;
+}
+
+/* BUTTON */
+.signup-box button{
+  width:100%;
+  padding:14px;
+  background:#6d28d9;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.signup-box button:hover{
+  background:#5b21b6;
+}
+
+/* LOGIN LINK */
+.login-link{
+  margin-top:25px;
+  text-align:center;
+  font-size:14px;
+}
+
+.login-link a{
+  color:#6d28d9;
+  font-weight:500;
+  text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .signup-wrapper{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+  .signup-image{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Lina Institute">
+      <span>Lina Institute</span>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+
+      <!-- LOGIN / SIGNUP -->
+      <span id="authLinks">
+        <a href="signup.html">Sign Up</a>
+      </span>
+
+      <!-- PROFILE -->
+<div class="profile" id="profileBox" onclick="toggleProfileMenu()" style="display:none;">
+  <div class="avatar-circle" id="avatarCircle"></div>
+</div>
+
+<div class="profile-menu" id="profileMenu">
+  <a href="profile.html">View Profile</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+    </nav>
+
+  </div>
+</header>
+
+
+<div class="signup-wrapper">
+
+  <!-- LEFT IMAGE -->
+  <div class="signup-image">
+    <img src="side1.jpg" alt="Signup Illustration">
+  </div>
+
+  <!-- SIGNUP FORM -->
+  <div class="signup-box">
+    <h1>Sign up with email</h1>
+
+    <input type="text" id="fullname" placeholder="Full name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <div class="login-link">
+      Already have an account?
+      <a href="auth.html">Log in</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function signup(){
+  const fullname = document.getElementById('fullname').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  if(fullname === "" || email === "" || password === ""){
+    alert("Please fill all fields");
+    return;
+  }
+
+  const user = { name: fullname, email: email, password: password };
+  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("loggedIn", "true");
+
+  alert("Signup successful! Please log in.");
+  window.location.href = "auth.html"; // redirect to login page
+}
+
+function logout(){
+  localStorage.removeItem("loggedIn");
+  document.getElementById("profileBox").style.display = "none";
+  document.getElementById("authLinks").style.display = "inline";
+  window.location.href = "index.html";
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const loggedIn = localStorage.getItem('loggedIn');
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+
+  if(loggedIn && storedUser){
+    document.getElementById("authLinks").style.display = "none";
+    document.getElementById("profileBox").style.display = "flex";
+    document.getElementById("avatarCircle").innerText =
+  storedUser.name.charAt(0).toUpperCase();
+
+  }
+});
+
+function toggleProfileMenu(){
+  const menu = document.getElementById("profileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", e => {
+  if (!e.target.closest(".profile")) {
+    document.getElementById("profileMenu").style.display = "none";
+  }
+});
+
+</script>
+
+
+</body>
+</html>

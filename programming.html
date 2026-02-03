@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Development | Lina Institute</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Times New Roman", Times, serif;
+}
+
+body{
+  background:#f5f5f5;
+  color:#0c1221;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(8,12,20,0.55);
+  backdrop-filter: blur(14px);
+}
+
+.nav-container{
+  padding: 22px 110px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo img{
+  width:40px;
+  border-radius:50%;
+}
+.logo span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+}
+.nav-links a:hover{
+  color:#3b82f6;
+}
+
+/* ================= PROFILE ================= */
+/* ================= PROFILE (FIXED) ================= */
+.profile{
+  position: relative;
+  display: none;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  text-transform: uppercase;
+}
+
+.profile-menu{
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #020617;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  min-width: 150px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 2000;
+}
+
+.profile-menu a,
+.profile-menu button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover{
+  background: #1e293b;
+  border-radius: 6px;
+}
+
+
+/* ================= HERO ================= */
+.course-hero-img{
+  width:100%;
+  max-height:420px;
+  object-fit:cover;
+  margin-top:85px;
+}
+
+/* ================= COURSE HEADER ================= */
+.course-header-box{
+  max-width:1200px;
+  margin:70px auto;
+  padding:0 40px;
+}
+.course-header-box h1{
+  font-size:3rem;
+  font-weight:700;
+}
+.course-header-box p{
+  font-size:1.15rem;
+  color:#475569;
+  margin-top:15px;
+  line-height:1.8;
+}
+
+/* ================= IMAGE + TEXT SECTION ================= */
+.section{
+  max-width:1200px;
+  margin:90px auto;
+  padding:0 40px;
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:60px;
+  align-items:center;
+  background:transparent;
+}
+
+.section.reverse{
+  grid-template-columns:1.1fr 1fr;
+}
+
+.section-image img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.section-image img:hover {
+  transform: scale(1.05); /* slight zoom */
+  box-shadow: 0 0 30px rgba(0, 200, 255, 0.6); /* glow boost */
+}
+
+.section-text h2{
+  font-size:2.4rem;
+  margin-bottom:15px;
+}
+.section-text p{
+  font-size:1.08rem;
+  line-height:1.85;
+  color:#475569;
+}
+.section-text ul{
+  padding-left:18px;
+}
+.section-text ul li{
+  margin-bottom:10px;
+}
+
+/* ================= CTA ================= */
+.section.cta{
+  display:block;
+  text-align:center;
+}
+.section.cta h2{
+  font-size:2.5rem;
+}
+.section.cta p{
+  margin:15px auto 25px;
+  max-width:700px;
+}
+
+
+
+/* ================= BUTTON ================= */
+.enroll-btn{
+  padding:14px 32px;
+  background:#3b82f6;
+  color:#fff;
+  font-weight:600;
+  border:none;
+  border-radius:24px;
+  cursor:pointer;
+}
+.enroll-btn:hover{
+  transform:scale(1.05);
+}
+/* ================= MODAL ================= */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  z-index:3000;
+  justify-content:center;
+  align-items:center;
+}
+.modal-content{
+  background:#fff;
+  width:100%;
+  max-width:500px;
+  padding:30px;
+  border-radius:15px;
+  position:relative;
+}
+.close-btn{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:26px;
+  cursor:pointer;
+  color:#3b82f6;
+}
+.modal-content h2{
+  margin-bottom:20px;
+}
+.modal-content form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.modal-content input{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #cbd5e1;
+}
+/* ===== READY TO START CENTER ALIGN ===== */
+
+.ready-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 80px auto;
+  width: 100%;
+}
+
+/* Heading */
+.ready-section h2,
+.ready-section h3 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Paragraph */
+.ready-section p {
+  max-width: 600px;
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+  color: #444;
+}
+
+/* Register button */
+.ready-section .register-btn,
+.ready-section button {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 16px 60px;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ready-section .register-btn:hover,
+.ready-section button:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+
+
+/* ===== FOOTER ===== */
+footer{
+  background:#1f2937;
+  color:#9ca3af;
+  text-align:center;
+  padding:40px 20px;
+  margin-top:40px;
+}
+
+
+/* RESPONSIVE FOR LAPTOP/MOBILE */
+@media(max-width:1000px){
+  .section{
+    display:block !important;
+  }
+  .section-image,
+  .section-text{
+    width:100%;
+    margin-top:20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="logo.png" alt="Lina Institute">
+      <span>Lina Institute</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+      <!-- LOGIN / SIGNUP -->
+      <span id="authLinks">
+        <a href="signup.html">Sign Up</a>
+      </span>
+
+      <!-- PROFILE -->
+<div class="profile" id="profileBox" onclick="toggleProfileMenu()">
+  <div class="avatar-circle" id="avatarCircle"></div>
+</div>
+
+<div class="profile-menu" id="profileMenu">
+  <a href="profile.html">View Profile</a>
+  <button onclick="logout()">Logout</button>
+</div>
+
+    </nav>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<img src="ph.jpg" alt="Web Development" class="course-hero-img">
+
+<section class="course-header-box">
+  <h1>Programming Basics</h1>
+  <p>Learn the core concepts of programming including variables, data types, loops, conditionals, and functions. Build a strong foundation in logic and problem-solving using beginner-friendly languages like Python or JavaScript.</p>
+</section>
+<!-- 1️⃣ Course Overview -->
+<section class="section" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+  <!-- IMAGE LEFT -->
+  <div class="section-image">
+    <img src="plearn.jpg" alt="Course Overview" style="width:100%; border-radius:12px; object-fit:cover;">
+  </div>
+  <!-- TEXT RIGHT -->
+  <div class="section-text">
+    <h2>Course Overview</h2>
+    <p>This course is designed for absolute beginners. You’ll understand how computers think, write your first programs, and solve real-world problems step by step. By the end, you’ll be confident in basic coding and ready to explore advanced topics like web development, data science, or app creation.</p>
+  </div>
+</section>
+
+<!-- 2️⃣ What You Will Learn -->
+<section class="section" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+  <!-- TEXT LEFT -->
+  <div class="section-text">
+    <h2>What You Will Learn</h2>
+    <ul>
+      <li>Programming fundamentals: variables, data types, loops, conditionals</li>
+      <li>Problem-solving and logical thinking</li>
+      <li>Functions and modular code structure</li>
+      <li>Basic debugging and error handling</li>
+      <li>DWriting simple programs in Python or JavaScript</li>
+    </ul>
+  </div>
+  <!-- IMAGE RIGHT -->
+  <div class="section-image">
+    <img src="plearn1.jpg" alt="What You Will Learn" style="width:100%; border-radius:12px; object-fit:cover;">
+  </div>
+</section>
+
+
+<section class="section" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+  <!-- IMAGE LEFT -->
+  <div class="section-image">
+    <img src="program.jpg" alt="Course Overview" style="width:100%; border-radius:12px; object-fit:cover;">
+  </div>
+<!-- 3️⃣ Course Syllabus -->
+<div class="section-text">
+  <h2>Course Syllabus</h2>
+  <ul>
+    <li>Module 1: Introduction to Programming & Logic</li>
+    <li>Module 2: Variables, Data Types & Operators</li>
+    <li>Module 3: Control Flow – Loops & Conditionals</li>
+    <li>Module 4: Functions & Code Reusability</li>
+    <li>Module 5: Basic Projects & Debugging Techniques</li>
+    <li>Module 6: Final Mini Project & Review</li>
+  </ul>
+  </div>
+</section>
+
+<!-- 4️⃣ Who Can Enroll -->
+<section class="section" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
+  <!-- TEXT LEFT -->
+  <div class="section-text">
+  <h2>Who Can Enroll</h2>
+  <ul>
+    <li>Beginners curious about coding</li>
+    <li>Students wanting strong logic skills</li>
+    <li>Professionals switching to tech careers</li>
+  </ul>
+ </div>
+  <!-- IMAGE RIGHT -->
+  <div class="section-image">
+    <img src="plast.jpg" alt="What You Will Learn" style="width:100%; border-radius:12px; object-fit:cover;">
+  </div>
+</section>
+
+<!-- 5️⃣ Ready To Start -->
+<section class="ready-section">
+  <h2>Ready to Start?</h2>
+  <p>Join our Programming Basics course today and take your first step into the world of coding!</p>
+  <button class="enroll-btn" id="openModalBtn">Register Now</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Lina Institute | All Rights Reserved</p>
+</footer>
+
+<!-- ================= POPUP FORM ================= -->
+<div class="modal" id="registerModal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <h2>Course Registration</h2>
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <input type="text" id="duration" value="3 Months" required>
+      <input type="date" id="fromDate" required>
+      <input type="date" id="toDate" required>
+      <button class="enroll-btn" type="submit">Submit</button>
+      <!-- COURSE DETAILS (HIDDEN) -->
+<input type="hidden" name="course_name" value="Programming Basics">
+
+<input type="hidden" name="course_overview"
+value="This course is designed for absolute beginners. You’ll understand how computers think, write your first programs, and solve real-world problems step by step. By the end, you’ll be confident in basic coding and ready to explore advanced topics like web development, data science, or app creation.">
+
+<input type="hidden" name="course_syllabus"
+value="Module 1: Introduction to Programming & Logic
+    Module 2: Variables, Data Types & Operators
+    Module 3: Control Flow – Loops & Conditionals
+    Module 4: Functions & Code Reusability
+    Module 5: Basic Projects & Debugging Techniques
+    Module 6: Final Mini Project & Review">
+
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+  emailjs.init("dic8wsnZs4woS12BT");
+})();
+const modal = document.getElementById("registerModal");
+const openBtns = document.querySelectorAll("#openModalBtn");
+const closeBtn = document.getElementById("closeModal");
+const form = document.getElementById("registerForm");
+
+openBtns.forEach(btn => {
+  btn.onclick = () => modal.style.display = "flex";
+});
+
+closeBtn.onclick = () => modal.style.display = "none";
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  emailjs.send("service_udqf34o","template_xc6fmij",{
+
+    /* student details */
+    to_email: document.getElementById("email").value, // ⭐ IMPORTANT
+    user_name: document.getElementById("name").value,
+    user_email: document.getElementById("email").value,
+    user_phone: document.getElementById("phone").value,
+
+    /* course details */
+    course_name: "Programming Basics",
+    duration: "3 Months",
+    fees: "15,000",
+
+    /* 🔥 ADD THESE (IMPORTANT) */
+    course_overview:
+    "TThis course is designed for absolute beginners. You’ll understand how computers think, write your first programs, and solve real-world problems step by step. By the end,\n"+
+    "you’ll be confident in basic coding and ready to explore advanced topics like web development, data science, or app creation.",
+
+    course_syllabus:
+    "Module 1: Introduction to Programming & Logic.\n"+
+    "Module 2: Variables, Data Types & Operators.\n"+
+    "Module 3: Control Flow – Loops & Conditionals.\n"+
+    "Module 4: Functions & Code Reusability.\n"+
+    "Module 5: Basic Projects & Debugging Techniques.\n"+
+    "Module 6: Final Mini Project & Review"
+
+
+  }).then(function(response){
+      alert("Register successfully ✅ Please check your mail");
+      console.log("SUCCESS", response);
+      form.reset();
+      modal.style.display = "none";
+  }).catch(function(error){
+      alert("Email failed ❌");
+      console.log("FAILED", error);
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loggedIn = localStorage.getItem("loggedIn");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (loggedIn && user) {
+    document.getElementById("authLinks").style.display = "none";
+    document.getElementById("profileBox").style.display = "flex";
+    document.getElementById("avatarCircle").innerText =
+      user.name.charAt(0).toUpperCase();
+  }
+});
+
+function toggleProfileMenu(){
+  const menu = document.getElementById("profileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+document.addEventListener("click", e => {
+  if (!e.target.closest(".profile")) {
+    document.getElementById("profileMenu").style.display = "none";
+  }
+});
+
+function logout(){
+  localStorage.removeItem("loggedIn");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

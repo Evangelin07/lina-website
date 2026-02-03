@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | Lina Institute</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+body{
+  background:#ffffff;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+      background:rgba(8,12,20,0.55);
+  backdrop-filter: blur(14px);
+}
+
+.nav-container{
+  padding: 22px 110px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* LOGO */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo img{
+  width:40px;
+  border-radius:50%;
+}
+.logo span {
+  font-family: 'Poppins', sans-serif; /* or 'Montserrat', sans-serif */
+  font-weight: 700;
+  font-size: 24px; /* perfect size for header */
+  color: #ffffff; /* white text */
+}
+/* LINKS */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+}
+.nav-links a:hover{
+  color:#3b82f6;
+}
+
+/* ================= PROFILE ================= */
+
+.profile{
+  display:none;                 /* login panna apram show */
+  align-items:center;
+  gap:10px;
+}
+
+.profile img{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #3b82f6;
+}
+
+.profile span{
+  color:#93c5fd;
+  font-size:14px;
+  font-weight:500;
+}
+
+.profile button{
+  background:linear-gradient(135deg,#3b82f6,#6366f1);
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  padding:4px 10px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.profile button:hover{
+  opacity:0.9;
+}
+
+
+
+/* LOGIN / SIGNUP */
+.auth-link{
+  color:#3b82f6 !important;
+  font-weight:600;
+}
+
+/* PAGE CONTENT TOP SPACE */
+body{
+  padding-top:80px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{
+    display:none;
+  }
+}
+
+/* ===== MAIN LAYOUT ===== */
+.login-wrapper{
+  width:100%;
+  max-width:1200px;
+  padding:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+/* ===== LEFT IMAGE ===== */
+.login-image{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-image img{
+  width:100%;
+  max-width:420px;
+}
+
+/* ===== RIGHT LOGIN BOX ===== */
+.login-box{
+  max-width:420px;
+}
+
+.login-box h1{
+  font-size:2rem;
+  font-weight:600;
+  margin-bottom:30px;
+  color:#111827;
+}
+
+/* INPUT */
+.login-box input{
+  width:100%;
+  padding:14px 16px;
+  font-size:15px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  outline:none;
+  margin-bottom:18px;
+}
+
+.login-box input:focus{
+  border-color:#6d28d9;
+}
+
+/* BUTTON */
+.login-box button{
+  width:100%;
+  padding:14px;
+  background:#6d28d9;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.login-box button:hover{
+  background:#5b21b6;
+}
+
+/* SIGNUP */
+.signup{
+  margin-top:25px;
+  text-align:center;
+  font-size:14px;
+}
+
+.signup a{
+  color:#6d28d9;
+  font-weight:500;
+  text-decoration:none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .login-wrapper{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+  .login-image{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Lina Institute">
+      <span>Lina Institute</span>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+
+      <!-- LOGIN / SIGNUP -->
+      <span id="authLinks">
+        <a href="signup.html">Sign Up</a>
+      </span>
+
+      <!-- PROFILE -->
+      <div id="profileBox" class="profile">
+        <div class="avatar-circle" id="avatarCircle"></div>
+        <span id="usernameDisplay"></span>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="login-wrapper">
+
+  <!-- LEFT ILLUSTRATION -->
+  <div class="login-image">
+    <img src="side1.jpg" alt="Learning Illustration">
+  </div>
+
+  <!-- RIGHT LOGIN -->
+  <div class="login-box">
+    <h1>Log in to continue your learning journey</h1>
+
+    <input type="text" placeholder="Email or Username">
+    <input type="password" placeholder="Password">
+
+    <button onclick="login()">Log In</button>
+
+    <div class="signup">
+      Don’t have an account?
+      <a href="signup.html">Sign up</a>
+    </div>
+  </div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+function login(){
+  // 1️⃣ Get input values
+  const input = document.querySelector('input[placeholder="Email or Username"]').value;
+  const password = document.querySelector('input[placeholder="Password"]').value;
+
+  // 2️⃣ Validation
+  if(input === "" || password === ""){
+    alert("Please enter email/username and password");
+    return;
+  }
+
+  // 3️⃣ Get stored user
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+
+  if(!storedUser){
+    alert("No account found. Please sign up first.");
+    return;
+  }
+
+  // 4️⃣ Check match (email OR username + password)
+  if((input === storedUser.email || input === storedUser.name) && password === storedUser.password){
+    localStorage.setItem("loggedIn", "true");
+      // ⭐ IMPORTANT — save full user object
+  localStorage.setItem("user", JSON.stringify(storedUser));
+    window.location.href = "index.html"; // redirect to home
+  } else {
+    alert("Invalid login details");
+  }
+}
+</script>
+
+</body>
+</html>

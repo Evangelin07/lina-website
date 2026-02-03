@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Lina Institute</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Roboto', sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  color:#111827;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(8,12,20,0.55);
+  backdrop-filter:blur(14px);
+}
+
+.nav-container{
+  padding:22px 110px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:40px;
+  border-radius:50%;
+}
+
+.logo span{
+  font-size:24px;
+  font-weight:700;
+  color:#fff;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+}
+
+.nav-links a:hover{
+  color:#3b82f6;
+}
+
+/* ===== PROFILE ===== */
+.profile{
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  cursor:pointer;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  text-transform: uppercase;
+}
+
+.profile-menu{
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #020617;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  min-width: 150px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+
+.profile-menu a,
+.profile-menu button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover{
+  background: #1e293b;
+  border-radius: 6px;
+}
+/* ===== CONTACT SECTION ===== */
+.contact-wrapper{
+  max-width:1200px;
+  margin:140px auto 60px;
+  padding:20px;
+}
+
+.contact-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+}
+
+.contact-left{
+  flex:1;
+}
+
+.contact-left h1{
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.contact-left p{
+  color:#4b5563;
+  margin-bottom:25px;
+  line-height:1.6;
+}
+
+.contact-details p{
+  margin-bottom:10px;
+  font-size:15px;
+}
+
+.contact-right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+}
+
+.contact-right img{
+  width:340px;
+  height:340px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+.title-line{
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg,#ec4899,#4f46e5);
+  border-radius: 10px;
+  margin: 12px 0 20px 0;
+}
+
+
+/* ===== BOTTOM BOXES ===== */
+.contact-bottom{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.contact-box{
+    background:linear-gradient(135deg,#ec4899,#4f46e5);
+   padding:25px;
+  border-radius:8px;
+    text-align:center;
+  color:#ffffff; 
+}
+
+.contact-box h3{
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+/* ===== SCROLL CONTACT FORM (NEW) ===== */
+.contact-form-section{
+  margin-top:120px;
+  text-align:center;
+}
+
+.contact-form-section h2{
+  font-size:32px;
+  color:#4f46e5;
+  margin-bottom:40px;
+}
+
+.contact-form{
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:16px;
+  border-radius:10px;
+  border:2px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(135deg,#ec4899,#6366f1) border-box;
+}
+
+.contact-form button{
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ec4899,#4f46e5);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:all 0.9s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111827;
+  color:#fff;
+  margin-top:60px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .nav-container{
+    padding:20px;
+  }
+
+  .contact-top{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .contact-bottom{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+  <div class="nav-container">
+
+    <div class="logo">
+      <img src="logo.png" alt="Lina Institute">
+      <span>Lina Institute</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+
+      <span id="authLinks">
+        <a href="signup.html">Sign Up</a>
+      </span>
+
+      <div class="profile" id="profileBox" onclick="toggleProfileMenu()">
+        <div class="avatar-circle" id="avatarCircle"></div>
+      </div>
+
+      <div class="profile-menu" id="profileMenu">
+        <a href="profile.html">View Profile</a>
+        <button onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ===== CONTACT CONTENT ===== -->
+<section class="contact-wrapper">
+
+  <div class="contact-top">
+
+    <div class="contact-left">
+      <h1>CONTACT US</h1>
+      <div class="title-line"></div>
+      <p>
+        We are here to meet any business need and to promote your company online.
+      </p>
+
+      <div class="contact-details">
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Location:</strong> 123 Lina Street, Chennai – 600001</p>
+        <p><strong>Email:</strong> info@linainstitute.com</p>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <img src="cont.jpg" alt="Contact Office">
+    </div>
+
+  </div>
+
+  <div class="contact-bottom">
+    <div class="contact-box">
+      <h3><i class="fas fa-phone"></i> CALL US</h3>
+      <p>+91 98765 43210<br>+91 91234 56789</p>
+    </div>
+
+    <div class="contact-box">
+      <h3><i class="fas fa-location-dot"></i> LOCATION</h3>
+      <p>Chennai, Tamil Nadu<br>India</p>
+    </div>
+
+    <div class="contact-box">
+      <h3><i class="fas fa-clock"></i> HOURS</h3>
+      <p>Mon – Fri: 10 AM – 6 PM</p>
+    </div>
+  </div>
+
+    <div class="contact-form-section reveal">
+    <h2>Quick Contact</h2>
+    <form class="contact-form" id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2026 Lina Institute | All Rights Reserved
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const authLinks = document.getElementById("authLinks");
+  const profileBox = document.getElementById("profileBox");
+  const avatarCircle = document.getElementById("avatarCircle");
+
+  const loggedIn = localStorage.getItem("loggedIn");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (loggedIn === "true" && user) {
+    // Hide Sign Up
+    authLinks.style.display = "none";
+
+    // Show profile
+    profileBox.style.display = "flex";
+    avatarCircle.innerText = user.name.charAt(0).toUpperCase();
+  } else {
+    // Show Sign Up
+    authLinks.style.display = "inline";
+
+    // Hide profile
+    profileBox.style.display = "none";
+  }
+});
+
+// Login helper (optional – if you call manually)
+function loginUser(user){
+  localStorage.setItem("loggedIn", "true");
+  localStorage.setItem("user", JSON.stringify(user));
+
+  document.getElementById('authLinks').style.display = 'none';
+  document.getElementById('profileBox').style.display = 'flex';
+  document.getElementById('avatarCircle').innerText =
+    user.name.charAt(0).toUpperCase();
+}
+
+// Toggle profile dropdown
+function toggleProfileMenu(){
+  const menu = document.getElementById('profileMenu');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Logout
+function logout(){
+  localStorage.removeItem('loggedIn');
+  localStorage.removeItem('user');
+  window.location.href = 'index.html';
+}
+
+// Close menu on outside click
+document.addEventListener('click', e => {
+  if (!e.target.closest('.profile')) {
+    document.getElementById('profileMenu').style.display = 'none';
+  }
+});
+
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-120){
+      el.classList.add("active");
+    }
+     });
+  });
+</script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault(); // page reload aagathu
+
+  alert("✅ Your message has been sent!");
+
+  this.reset(); // form clear aagum
+});
+</script>
+
+</body>
+</html>

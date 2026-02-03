@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Lina Institute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+<header class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Lina Institute">
+      <span>Lina Institute</span>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+
+      <!-- LOGIN / SIGNUP -->
+      <span id="authLinks">
+        <a href="signup.html">Sign Up</a>
+      </span>
+
+<!-- PROFILE -->
+<div class="profile" id="profileBox" onclick="toggleProfileMenu()">
+  <div class="avatar-circle" id="avatarCircle"></div>
+  <span id="usernameDisplay"></span>
+</div>
+
+<div class="profile-menu" id="profileMenu">
+  <a href="profile.html">View Profile</a>
+  <button onclick="logout()">Logout</button>
+</div>
+    </nav>
+
+  </div>
+</header>
+
+
+<!-- Hero About (Option 2) -->
+<section class="hero about-hero option2">
+  <div class="grid-bg"></div>
+
+  <div class="hero-content">
+    <h1>About Lina Institute</h1>
+    <p>
+      At Lina Institute, we empower learners with practical skills,
+      real projects, and career-focused training to succeed in the modern world.
+    </p>
+  </div>
+
+  <!-- Glow dots -->
+  <span class="glow-dot d1"></span>
+  <span class="glow-dot d2"></span>
+  <span class="glow-dot d3"></span>
+</section>
+
+
+
+
+<!-- What We Offer -->
+<section class="what-we-offer">
+  <h2>What We Offer</h2>
+  <div class="offer-grid">
+    <div class="offer-card">Practical Skill Courses</div>
+    <div class="offer-card">Real Project Experience</div>
+    <div class="offer-card">Career Mentorship</div>
+    <div class="offer-card">Certification Support</div>
+  </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="mv-section">
+  <div class="mv-container">
+
+    <div class="mv-box">
+      <h3>Our Mission</h3>
+      <p>
+        To provide industry-ready skills and confidence for every learner’s career journey.
+      </p>
+    </div>
+
+    <div class="mv-box">
+      <h3>Our Vision</h3>
+      <p>
+        To be a leading institute shaping future professionals with expertise & excellence.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Why Choose Us -->
+<section class="why-choose-us">
+  <h2 class="why-title">Why Choose Lina Institute?</h2>
+  <div class="why-grid">
+    <div class="offer-card">Expert Mentors</div>
+    <div class="offer-card">Hands-on Projects</div>
+    <div class="offer-card">Industry Curriculum</div>
+    <div class="offer-card">Career Support</div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat">
+      <h3>600+</h3>
+      <p>Students Trained</p>
+    </div>
+    <div class="stat">
+      <h3>25+</h3>
+      <p>Skill Courses</p>
+    </div>
+    <div class="stat">
+      <h3>90%</h3>
+      <p>Job Assistance</p>
+    </div>
+    <div class="stat">
+      <h3>1200+</h3>
+      <p>Projects Completed</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Lina Institute | All Rights Reserved</p>
+</footer>
+<script>
+function loginUser(user){
+  // Hide signup link
+  document.getElementById('authLinks').style.display = 'none';
+  // Show profile box
+  document.getElementById('profileBox').style.display = 'flex';
+  // Display username
+
+  // Avatar first letter
+  const firstLetter = user.name.charAt(0).toUpperCase();
+  document.getElementById("avatarCircle").innerText = firstLetter;
+}
+
+function logout(){
+  localStorage.removeItem('loggedIn');
+  document.getElementById('profileBox').style.display = 'none';
+  document.getElementById('authLinks').style.display = 'inline';
+  window.location.href = 'index.html';
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const loggedIn = localStorage.getItem('loggedIn');
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+
+  if(loggedIn && storedUser){
+    loginUser(storedUser);
+  } else {
+    document.getElementById('authLinks').style.display = 'inline';
+    document.getElementById('profileBox').style.display = 'none';
+  }
+});
+
+// ===== PROFILE DROPDOWN =====
+function toggleProfileMenu(){
+  const menu = document.getElementById("profileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Close menu when clicking outside
+document.addEventListener("click", function(e){
+  const profile = document.getElementById("profileBox");
+  if(profile && !profile.contains(e.target)){
+    document.getElementById("profileMenu").style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>

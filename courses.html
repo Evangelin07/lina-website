@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses | Lina Institute</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#0b0f14;
+  color:#ffffff;
+}
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:transparent;
+}
+
+.nav-container{
+  padding: 22px 110px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* LOGO */
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo img{
+  width:40px;
+  border-radius:50%;
+}
+.logo span {
+  font-family: 'Poppins', sans-serif; /* or 'Montserrat', sans-serif */
+  font-weight: 700;
+  font-size: 24px; /* perfect size for header */
+  color: #ffffff; /* white text */
+}
+
+/* LINKS */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+}
+.nav-links a:hover{
+  color:#3b82f6;
+}
+
+/* ================= PROFILE ================= */
+
+.profile{
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-menu{
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #020617;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  min-width: 150px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.profile-menu a,
+.profile-menu button{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-menu a:hover,
+.profile-menu button:hover{
+  background: #1e293b;
+  border-radius: 6px;
+}
+
+
+/* ===== HERO ===== */
+.courses-hero{
+  min-height:60vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.85)),
+    url("course-bg.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  padding-top:90px;
+}
+
+.courses-hero .content{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.courses-hero h1{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.courses-hero p{
+  color:#d1d5db;
+  max-width:600px;
+}
+
+/* ===== COURSES SECTION ===== */
+section{
+  padding:90px 20px;
+  background:#ffffff;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.section-title h2{
+  font-family: "Times New Roman", Times, serif;
+  font-size:3.2rem;
+  font-weight:900;
+  text-align:center;
+  margin-bottom:60px;
+  color:#0c1221;  /* pure black */
+}
+.section-title h2::after{
+  content:"";
+  display:block;
+  width:90px;
+  height:4px;
+  background:#2563eb;   /* blue underline */
+  margin:14px auto 0;
+  border-radius:10px;
+}
+
+
+/* ===== COURSE GRID ===== */
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+/* ===== COURSE CARD ===== */
+.course-card{
+  background:linear-gradient(145deg,#f8fafc,#eef2ff); 
+  border-radius:26px;
+  padding:35px;
+  border:1px solid rgba(37,99,235,0.25);
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* glow border */
+.course-card::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:26px;
+  background:linear-gradient(
+    120deg,
+    #3b82f6,
+    #60a5fa,
+    #a5b4fc
+  );
+  opacity:0;
+  z-index:-1;
+  transition:0.4s;
+}
+
+.course-card:hover::after{
+  opacity:1;
+}
+
+.course-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(59,130,246,0.25);
+}
+
+.course-icon{
+  font-size:2.5rem;
+  margin-bottom:15px;
+  color:#3b82f6;
+}
+
+.course-card h3{
+  font-size:1.3rem;
+  margin-bottom:10px;
+  color:#0f172a;
+}
+
+.course-card p{
+  color:#334155;
+  font-size:0.95rem;
+  margin-bottom:20px;
+}
+
+/* INFO */
+.course-info{
+  display:flex;
+  justify-content:space-between;
+  font-size:0.85rem;
+  color:#475569;
+  margin-bottom:20px;
+}
+
+/* BUTTON */
+.course-card a{
+  display:inline-block;
+  padding:12px 26px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+  color:#ffffff;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.course-card a:hover{
+  transform:scale(1.05);
+}
+
+.avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  cursor:pointer;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  text-transform: uppercase;
+}
+/* ===== FOOTER ===== */
+footer{
+  background:#020617;
+  padding:40px 20px;
+  text-align:center;
+  color:#9ca3af;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .courses-hero h1{
+    font-size:2.2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Lina Institute">
+      <span>Lina Institute</span>
+    </div>
+
+    <!-- NAV LINKS -->
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="contact.html">Contact</a>
+
+      <!-- LOGIN / SIGNUP -->
+      <span id="authLinks">
+        <a href="signup.html">Sign Up</a>
+      </span>
+
+<!-- PROFILE -->
+<div class="profile" id="profileBox" onclick="toggleProfileMenu()">
+  <div class="avatar-circle" id="avatarCircle"></div>
+  <span id="usernameDisplay"></span>
+</div>
+
+<div class="profile-menu" id="profileMenu">
+  <a href="profile.html">View Profile</a>
+  <button onclick="logout()">Logout</button>
+</div>
+    </nav>
+
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="courses-hero">
+  <div class="content">
+    <h1>Our Professional Courses</h1>
+    <p>Build industry-ready skills with hands-on training, real projects and expert mentorship.</p>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Popular Courses</h2>
+    </div>
+
+    <div class="course-grid">
+
+      <div class="course-card">
+        <div class="course-icon">💻</div>
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript, React & real-time projects.</p>
+        <div class="course-info">
+          <span>⏱ 6 Months</span>
+          <span>🎓 Certificate</span>
+        </div>
+        <a href="web-development.html">Enroll Now</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-icon">🎨</div>
+        <h3>UI / UX Design</h3>
+        <p>Design principles, Figma, wireframes & portfolios.</p>
+        <div class="course-info">
+          <span>⏱ 4 Months</span>
+          <span>🎓 Certificate</span>
+        </div>
+        <a href="uiux.html">Enroll Now</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-icon">⚙️</div>
+        <h3>Programming Basics</h3>
+        <p>Strong logic, problem solving & coding foundation.</p>
+        <div class="course-info">
+          <span>⏱ 3 Months</span>
+          <span>🎓 Certificate</span>
+        </div>
+        <a href="programming.html">Enroll Now</a>
+      </div>
+
+      <div class="course-card">
+        <div class="course-icon">📊</div>
+        <h3>Data Analytics</h3>
+        <p>Excel, SQL, Power BI & data-driven decision making.</p>
+        <div class="course-info">
+          <span>⏱ 5 Months</span>
+          <span>🎓 Certificate</span>
+        </div>
+        <a href="data-analytics.html">Enroll Now</a>
+      </div>
+      
+  <!-- Extra Course 1 -->
+  <div class="course-card">
+    <div class="course-icon">🤖</div>
+    <h3>Machine Learning</h3>
+    <p>Python, AI algorithms & real-world ML projects.</p>
+    <div class="course-info">
+      <span>⏱ 6 Months</span>
+      <span>🎓 Certificate</span>
+    </div>
+    <a href="machine.html">Enroll Now</a>
+  </div>
+
+  <!-- Extra Course 2 -->
+  <div class="course-card">
+    <div class="course-icon">🔒</div>
+    <h3>Cyber Security</h3>
+    <p>Network security, ethical hacking & protection techniques.</p>
+    <div class="course-info">
+      <span>⏱ 4 Months</span>
+      <span>🎓 Certificate</span>
+    </div>
+    <a href="cyber.html">Enroll Now</a>
+  </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Lina Institute | All Rights Reserved</p>
+</footer>
+<script>
+function loginUser(user){
+  // Hide signup link
+  document.getElementById('authLinks').style.display = 'none';
+  // Show profile box
+  document.getElementById('profileBox').style.display = 'flex';
+  // Display username
+
+  // Avatar first letter
+  const firstLetter = user.name.charAt(0).toUpperCase();
+  document.getElementById("avatarCircle").innerText = firstLetter;
+}
+
+function logout(){
+  localStorage.removeItem('loggedIn');
+  document.getElementById('profileBox').style.display = 'none';
+  document.getElementById('authLinks').style.display = 'inline';
+  window.location.href = 'index.html';
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const loggedIn = localStorage.getItem('loggedIn');
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+
+  if(loggedIn && storedUser){
+    loginUser(storedUser);
+  } else {
+    document.getElementById('authLinks').style.display = 'inline';
+    document.getElementById('profileBox').style.display = 'none';
+  }
+});
+
+// ===== PROFILE DROPDOWN =====
+function toggleProfileMenu(){
+  const menu = document.getElementById("profileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Close menu when clicking outside
+document.addEventListener("click", function(e){
+  const profile = document.getElementById("profileBox");
+  if(profile && !profile.contains(e.target)){
+    document.getElementById("profileMenu").style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>
